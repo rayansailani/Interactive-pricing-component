@@ -10,7 +10,7 @@ const Android12Switch = styled(Switch)(({ theme }) => ({
 }));
 
 const MuiSwitch = ({ onSwtich }) => {
-  const [checked, setChecked] = React.useState(true);
+  const [checked, setChecked] = React.useState(false);
 
   const handleChange = (event) => {
     // console.log(event.target.checked);

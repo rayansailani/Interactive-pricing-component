@@ -25,13 +25,15 @@ const Card = () => {
     32: "1M",
   };
 
-  const [price, setPrice] = useState(16);
+  const [price, setPrice] = useState(20);
+  const [discountedPrice, setDiscountedPrice] = useState(20);
   const [yearly, setYearly] = useState(false);
   const [views, setViews] = useState(priceViewMapping[16] + " pageviews");
 
   const onSlide = (price) => {
-    setPrice(
-      !yearly ? price : parseInt(parseFloat(price) - parseFloat(price * 0.25))
+    setPrice(price);
+    setDiscountedPrice(
+      !yearly ? price : parseInt(parseFloat(price) - parseFloat(price) * 0.25)
     );
     displayViews();
   };
@@ -64,7 +66,10 @@ const Card = () => {
           >
             {views}
           </Typography>
-          <PricingText stylingClass={priceComponentDesktop} price={price} />
+          <PricingText
+            stylingClass={priceComponentDesktop}
+            price={discountedPrice}
+          />
         </Box>
         <MiuiSlider onSlide={onSlide} />
         <PricingText stylingClass={priceComponentMobile} price={price} />
